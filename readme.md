@@ -5,10 +5,10 @@ Run Stress test
 ----
 
  - Write stress test:
-> siege -d1 -c10   -t15s -f urls.txt 2> siege-result/write-d1-c10-t15s-result.txt
-> siege -d1 -c25   -t15s -f urls.txt 2> siege-result/write-d1-c25-t15s-result.txt
-> siege -d1 -c50   -t15s -f urls.txt 2> siege-result/write-d1-c50-t15s-result.txt
-> siege -d1 -c100  -t15s -f urls.txt 2> siege-result/write-d1-c100-t15s-result.txt
+> siege -d1 -c10   -t15s -f write_urls.txt 2> siege-result/write-d1-c10-t15s-result.txt
+> siege -d1 -c25   -t15s -f write_urls.txt 2> siege-result/write-d1-c25-t15s-result.txt
+> siege -d1 -c50   -t15s -f write_urls.txt 2> siege-result/write-d1-c50-t15s-result.txt
+> siege -d1 -c100  -t15s -f write_urls.txt 2> siege-result/write-d1-c100-t15s-result.txt
 
 
 - Read stress test (with and without Probabilistic Cache Flushing):
