@@ -1,0 +1,37 @@
+** SIEGE 4.1.0
+** Preparing 250 concurrent users for battle.
+The server is now under siege...
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] socket: read error Connection reset by peer sock.c:635: Connection reset by peer
+[[1;33merror[0m] socket: unable to connect sock.c:282: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] socket: unable to connect sock.c:282: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] socket: unable to connect sock.c:282: Connection reset by peer
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+[[1;33merror[0m] unable to write to socket sock.c:733: Broken pipe
+
+Lifting the server siege...
+Transactions:		       27135 hits
+Availability:		       99.93 %
+Elapsed time:		      129.18 secs
+Data transferred:	        0.51 MB
+Response time:		        0.68 secs
+Transaction rate:	      210.06 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		      143.74
+Successful transactions:       27135
+Failed transactions:	          20
+Longest transaction:	        2.03
+Shortest transaction:	        0.04
+ 
