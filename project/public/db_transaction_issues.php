@@ -3,6 +3,7 @@
 /**
  * @link https://en.wikipedia.org/wiki/Isolation_(database_systems)
  * @link https://ru.wikipedia.org/wiki/%D0%A3%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C_%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8_%D1%82%D1%80%D0%B0%D0%BD%D0%B7%D0%B0%D0%BA%D1%86%D0%B8%D0%B9
+ * @run docker compose up -d php-fpm mysql
  * @run docker compose exec php-fpm public/db_transaction_issues.php
  */
 
@@ -15,7 +16,7 @@ for ($i = 0; $i < 2; $i++) {
 }
 
 foreach ($connections as $connection) {
-    $connection->query('SET SESSION innodb_lock_wait_timeout = 2');
+    $connection->query('SET SESSION innodb_lock_wait_timeout = 4');
 }
 
 $connections[0]->query('CREATE TABLE IF NOT EXISTS  isolation_test (
@@ -131,13 +132,13 @@ function test_lost_update (): array {
 function test_non_repeatable_reads(): array {
     global $connections;
 
-    $connections[0]->query('INSERT INTO isolation_test VALUES(1, 20)');
+    $connections[0]->query('INSERT INTO isolation_test VALUES(1, 30)');
 
     $connections[0]->query('START TRANSACTION');
     $connections[1]->query('START TRANSACTION');
 
     $actual_value = $connections[1]->query('SELECT value FROM isolation_test WHERE id = 1')->fetch_row()[0];
-    $connections[0]->query('UPDATE isolation_test SET value = value + 25 WHERE id = 1');
+    $connections[0]->query('UPDATE isolation_test SET value = value + 55 WHERE id = 1');
 
     $connections[0]->query('COMMIT');
 
