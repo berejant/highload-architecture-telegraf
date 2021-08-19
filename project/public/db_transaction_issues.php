@@ -151,18 +151,18 @@ function test_non_repeatable_reads(): array {
 function test_phantoms(): array {
     global $connections;
 
-    $connections[0]->query('INSERT INTO isolation_test VALUES(1, 10)');
-
     $connections[0]->query('START TRANSACTION');
     $connections[1]->query('START TRANSACTION');
 
-    $expected_value = $connections[1]->query('SELECT SUM(value) FROM isolation_test')->fetch_row()[0];
+    $expected_value = $connections[0]->query('SELECT value FROM isolation_test WHERE id = 1')->fetch_row()[0] ?? 'null';
 
-    $connections[0]->query('INSERT INTO isolation_test VALUES(2, 20)');
-    $connections[0]->query('COMMIT');
-
-    $actual_value = $connections[1]->query('SELECT SUM(value) FROM isolation_test')->fetch_row()[0];
+    $connections[1]->query('INSERT INTO isolation_test VALUES(1, 10)');
     $connections[1]->query('COMMIT');
+
+    $connections[0]->query('UPDATE isolation_test SET value = 25');
+
+    $actual_value = $connections[0]->query('SELECT value FROM isolation_test WHERE id = 1')->fetch_row()[0] ?? 'null';
+    $connections[0]->query('COMMIT');
 
     return [$expected_value, $actual_value];
 }
