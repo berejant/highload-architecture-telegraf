@@ -1,4 +1,4 @@
-{
+curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/jobs/_search  -d '{
   "suggest": {
     "job-suggest": {
       "prefix": "tiyita",
@@ -11,4 +11,4 @@
       }
     }
   }
-}
+}'
