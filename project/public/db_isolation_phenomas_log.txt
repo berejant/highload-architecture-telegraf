@@ -1,0 +1,5 @@
+ Isolation level     |      Dirty reads       |      Lost updates      |  Non-repeatable reads  |        Phantoms        |
+    READ UNCOMMITTED    |         10!=35         |         45==45         |         85!=30         |        null!=25        |
+     READ COMMITTED     |         10==10         |         45!=20         |         85!=30         |        null!=25        |
+    REPEATABLE READ     |         10==10         |         45==45         |         30==30         |        null!=25        |
+      SERIALIZABLE      |         10==10         |        Deadlock        |      Lock timeout      |      Lock timeout      |
